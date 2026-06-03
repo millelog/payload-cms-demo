@@ -185,8 +185,8 @@ export const seed = async ({
       blockImage: block2Doc,
       author: demoAuthor,
       categories: [catByName('Branding'), catByName('Digital Marketing')].filter(
-        Boolean,
-      ) as string[],
+        (id): id is number => id != null,
+      ),
     }),
   })
 
