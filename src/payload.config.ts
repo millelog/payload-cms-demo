@@ -63,21 +63,6 @@ export default buildConfig({
     },
   }),
   collections: [
-    {
-      slug: 'folders',
-      folders: true,
-      admin: {
-        useAsTitle: 'name',
-      },
-      fields: [
-        {
-          name: 'name',
-          type: 'text',
-          required: true,
-          label: 'Folder Name',
-        },
-      ],
-    },
     Pages,
     Posts,
     Media,
