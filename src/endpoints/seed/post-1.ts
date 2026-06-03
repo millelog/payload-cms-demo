@@ -5,7 +5,7 @@ export type PostArgs = {
   heroImage: Media
   blockImage: Media
   author: User
-  categories?: (number | string | Category)[]
+  categories?: (number | Category)[]
 }
 
 export const post1: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> = ({
