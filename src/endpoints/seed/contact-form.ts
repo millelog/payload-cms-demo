@@ -14,7 +14,7 @@ export const contactForm: RequiredDataFromCollectionSlug<'forms'> = {
               format: 0,
               mode: 'normal',
               style: '',
-              text: 'The contact form has been submitted successfully.',
+              text: 'Thank you for contacting Cascade Online Design. We will be in touch shortly.',
               version: 1,
             },
           ],
@@ -35,7 +35,7 @@ export const contactForm: RequiredDataFromCollectionSlug<'forms'> = {
   createdAt: '2023-01-12T21:47:41.374Z',
   emails: [
     {
-      emailFrom: '"Payload" \u003Cdemo@payloadcms.com\u003E',
+      emailFrom: '"Cascade Online Design" <demo@cascadeonlinedesign.com>',
       emailTo: '{{email}}',
       message: {
         root: {
@@ -50,7 +50,7 @@ export const contactForm: RequiredDataFromCollectionSlug<'forms'> = {
                   format: 0,
                   mode: 'normal',
                   style: '',
-                  text: 'Your contact form submission was successfully received.',
+                  text: 'Thanks for reaching out to Cascade Online Design. We received your message and will get back to you within 24 hours.',
                   version: 1,
                 },
               ],
@@ -67,7 +67,7 @@ export const contactForm: RequiredDataFromCollectionSlug<'forms'> = {
           version: 1,
         },
       },
-      subject: "You've received a new message.",
+      subject: 'Thanks for contacting Cascade Online Design',
     },
   ],
   fields: [
@@ -105,7 +105,7 @@ export const contactForm: RequiredDataFromCollectionSlug<'forms'> = {
     },
   ],
   redirect: undefined,
-  submitButtonLabel: 'Submit',
+  submitButtonLabel: 'Send Message',
   title: 'Contact Form',
   updatedAt: '2023-01-12T21:47:41.374Z',
 }

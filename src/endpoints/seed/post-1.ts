@@ -1,21 +1,24 @@
-import type { Media, User } from '@/payload-types'
+import type { Category, Media, User } from '@/payload-types'
 import { RequiredDataFromCollectionSlug } from 'payload'
 
 export type PostArgs = {
   heroImage: Media
   blockImage: Media
   author: User
+  categories?: (string | Category)[]
 }
 
 export const post1: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> = ({
   heroImage,
   blockImage,
   author,
+  categories = [],
 }) => {
   return {
-    slug: 'digital-horizons',
+    slug: 'why-your-business-needs-a-modern-website',
     _status: 'published',
     authors: [author],
+    categories,
     content: {
       root: {
         type: 'root',
@@ -29,7 +32,7 @@ export const post1: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'Dive into the marvels of modern innovation, where the only constant is change. A journey where pixels and data converge to craft the future.',
+                text: 'Your website is your most powerful sales tool. In 2026, a modern, high-performance site is no longer optional — it is essential for growth.',
                 version: 1,
               },
             ],
@@ -42,7 +45,7 @@ export const post1: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
           {
             type: 'block',
             fields: {
-              blockName: 'Disclaimer',
+              blockName: 'Demo Content',
               blockType: 'banner',
               content: {
                 root: {
@@ -57,7 +60,7 @@ export const post1: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
                           format: 1,
                           mode: 'normal',
                           style: '',
-                          text: 'Disclaimer:',
+                          text: 'Note:',
                           version: 1,
                         },
                         {
@@ -66,7 +69,7 @@ export const post1: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
                           format: 0,
                           mode: 'normal',
                           style: '',
-                          text: ' This content is fabricated and for demonstration purposes only. To edit this post, ',
+                          text: ' This is sample content for the Cascade Online Design demo. You can edit this post from the ',
                           version: 1,
                         },
                         {
@@ -78,7 +81,7 @@ export const post1: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
                               format: 0,
                               mode: 'normal',
                               style: '',
-                              text: 'navigate to the admin dashboard',
+                              text: 'admin dashboard',
                               version: 1,
                             },
                           ],
@@ -129,7 +132,7 @@ export const post1: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'The Rise of AI and Machine Learning',
+                text: 'First Impressions Happen Online',
                 version: 1,
               },
             ],
@@ -148,7 +151,7 @@ export const post1: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'We find ourselves in a transformative era where artificial intelligence (AI) stands at the forefront of technological evolution. The ripple effects of its advancements are reshaping industries at an unprecedented pace. No longer are businesses bound by the limitations of tedious, manual processes. Instead, sophisticated machines, fueled by vast amounts of historical data, are now capable of making decisions previously left to human intuition. These intelligent systems are not only optimizing operations but also pioneering innovative approaches, heralding a new age of business transformation worldwide. ',
+                text: 'Before a potential customer ever walks through your door or picks up the phone, they visit your website. Studies consistently show that users form an opinion about a business within the first few seconds of landing on their site. A dated design, slow load times, or a confusing layout sends a clear message: this business is not keeping up. A modern website communicates professionalism, credibility, and attention to detail — all before a single word is read.',
                 version: 1,
               },
             ],
@@ -167,37 +170,7 @@ export const post1: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'To demonstrate basic AI functionality, here is a javascript snippet that makes a POST request to a generic AI API in order to generate text based on a prompt. ',
-                version: 1,
-              },
-            ],
-            direction: 'ltr',
-            format: '',
-            indent: 0,
-            tag: 'h4',
-            version: 1,
-          },
-          {
-            type: 'block',
-            fields: {
-              blockName: 'Generate Text',
-              blockType: 'code',
-              code: "async function generateText(prompt) {\n    const apiKey = 'your-api-key';\n    const apiUrl = 'https://api.example.com/generate-text';\n\n    const response = await fetch(apiUrl, {\n        method: 'POST',\n        headers: {\n            'Content-Type': 'application/json',\n            'Authorization': `Bearer ${apiKey}`\n        },\n        body: JSON.stringify({\n            model: 'text-generation-model',\n            prompt: prompt,\n            max_tokens: 50\n        })\n    });\n\n    const data = await response.json();\n    console.log(data.choices[0].text.trim());\n}\n\n// Example usage\ngenerateText(\"Once upon a time in a faraway land,\");\n",
-              language: 'javascript',
-            },
-            format: '',
-            version: 2,
-          },
-          {
-            type: 'heading',
-            children: [
-              {
-                type: 'text',
-                detail: 0,
-                format: 0,
-                mode: 'normal',
-                style: '',
-                text: 'IoT: Connecting the World Around Us',
+                text: 'Mobile-First Is No Longer a Buzzword',
                 version: 1,
               },
             ],
@@ -216,26 +189,7 @@ export const post1: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: "In today's rapidly evolving technological landscape, the Internet of Things (IoT) stands out as a revolutionary force. From transforming our residences with smart home systems to redefining transportation through connected cars, IoT's influence is palpable in nearly every facet of our daily lives.",
-                version: 1,
-              },
-            ],
-            direction: 'ltr',
-            format: '',
-            indent: 0,
-            textFormat: 0,
-            version: 1,
-          },
-          {
-            type: 'paragraph',
-            children: [
-              {
-                type: 'text',
-                detail: 0,
-                format: 0,
-                mode: 'normal',
-                style: '',
-                text: "This technology hinges on the seamless integration of devices and systems, allowing them to communicate and collaborate effortlessly. With each connected device, we move a step closer to a world where convenience and efficiency are embedded in the very fabric of our existence. As a result, we're transitioning into an era where our surroundings intuitively respond to our needs, heralding a smarter and more interconnected global community.",
+                text: 'Over 60% of web traffic now comes from mobile devices. If your website does not look and perform flawlessly on a phone, you are losing more than half of your potential audience. Modern web design starts with the smallest screen and scales up, ensuring that every visitor gets a seamless experience regardless of their device. This is not just about shrinking content to fit — it is about rethinking navigation, touch targets, and content hierarchy for the way people actually use the web today.',
                 version: 1,
               },
             ],
@@ -256,44 +210,61 @@ export const post1: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
             version: 2,
           },
           {
-            type: 'block',
-            fields: {
-              blockName: 'Dynamic Components',
-              blockType: 'banner',
-              content: {
-                root: {
-                  type: 'root',
-                  children: [
-                    {
-                      type: 'paragraph',
-                      children: [
-                        {
-                          type: 'text',
-                          detail: 0,
-                          format: 0,
-                          mode: 'normal',
-                          style: '',
-                          text: "This content above is completely dynamic using custom layout building blocks configured in the CMS. This can be anything you'd like from rich text and images, to highly designed, complex components.",
-                          version: 1,
-                        },
-                      ],
-                      direction: 'ltr',
-                      format: '',
-                      indent: 0,
-                      textFormat: 0,
-                      version: 1,
-                    },
-                  ],
-                  direction: 'ltr',
-                  format: '',
-                  indent: 0,
-                  version: 1,
-                },
+            type: 'heading',
+            children: [
+              {
+                type: 'text',
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: 'Performance Drives Conversions',
+                version: 1,
               },
-              style: 'info',
-            },
+            ],
+            direction: 'ltr',
             format: '',
-            version: 2,
+            indent: 0,
+            tag: 'h2',
+            version: 1,
+          },
+          {
+            type: 'paragraph',
+            children: [
+              {
+                type: 'text',
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: 'Speed matters more than ever. A one-second delay in page load time can result in a 7% reduction in conversions. Modern websites are built with performance at the core — optimized images, efficient code, and smart caching strategies that ensure your pages load in under two seconds. When your site is fast, visitors stay longer, explore more, and are far more likely to become customers.',
+                version: 1,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            textFormat: 0,
+            version: 1,
+          },
+          {
+            type: 'paragraph',
+            children: [
+              {
+                type: 'text',
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: 'At Cascade Online Design, we build websites that combine stunning visual design with the technical performance that drives real business results. Whether you need a complete redesign or a ground-up build, we focus on creating sites that work as hard as you do.',
+                version: 1,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            textFormat: 0,
+            version: 1,
           },
         ],
         direction: 'ltr',
@@ -305,11 +276,11 @@ export const post1: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
     heroImage: heroImage.id,
     meta: {
       description:
-        'Dive into the marvels of modern innovation, where the only constant is change. A journey where pixels and data converge to craft the future.',
+        'Your website is your most powerful sales tool. Learn why a modern, high-performance website is essential for business growth in 2026.',
       image: heroImage.id,
-      title: 'Digital Horizons: A Glimpse into Tomorrow',
+      title: 'Why Your Business Needs a Modern Website in 2026',
     },
-    relatedPosts: [], // this is populated by the seed script
-    title: 'Digital Horizons: A Glimpse into Tomorrow',
+    relatedPosts: [],
+    title: 'Why Your Business Needs a Modern Website in 2026',
   }
 }

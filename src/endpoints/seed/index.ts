@@ -22,12 +22,21 @@ const collections: CollectionSlug[] = [
 
 const globals: GlobalSlug[] = ['header', 'footer']
 
-const categories = ['Technology', 'News', 'Finance', 'Design', 'Software', 'Engineering']
+const categories = ['Web Design', 'Branding', 'SEO', 'Development', 'E-Commerce', 'Digital Marketing']
 
-// Next.js revalidation errors are normal when seeding the database without a server running
-// i.e. running `yarn seed` locally instead of using the admin UI within an active app
-// The app is not running to revalidate the pages and so the API routes are not available
-// These error messages can be ignored: `Error hitting revalidate route for...`
+const CF_ACCOUNT_HASH = 'zqlO_f93Gilxz6zHS6qT_w'
+const cfImage = (id: string) =>
+  `https://imagedelivery.net/${CF_ACCOUNT_HASH}/${id}/w=1920`
+
+const IMAGES = {
+  hero: cfImage('c860e1e0-c9fc-4863-df40-b1f56462d100'),
+  post1: cfImage('8fc27dc3-3d59-439c-4dc0-0dc1bcd4b600'),
+  post2: cfImage('1cb6d534-9842-43a9-b79b-2f74b7eb0500'),
+  post3: cfImage('4a3b75a7-17c7-4f18-3422-cda316157c00'),
+  block1: cfImage('9bd93a7e-36a0-4824-33fd-8afe039edc00'),
+  block2: cfImage('0b5633eb-b3e0-4f4f-d0f1-19ffebf17800'),
+}
+
 export const seed = async ({
   payload,
   req,
@@ -37,13 +46,8 @@ export const seed = async ({
 }): Promise<void> => {
   payload.logger.info('Seeding database...')
 
-  // we need to clear the media directory before seeding
-  // as well as the collections and globals
-  // this is because while `yarn seed` drops the database
-  // the custom `/api/seed` endpoint does not
   payload.logger.info(`— Clearing collections and globals...`)
 
-  // clear the database
   await Promise.all(
     globals.map((global) =>
       payload.updateGlobal({
@@ -83,72 +87,91 @@ export const seed = async ({
 
   payload.logger.info(`— Seeding media...`)
 
-  const [image1Buffer, image2Buffer, image3Buffer, hero1Buffer] = await Promise.all([
-    fetchFileByURL(
-      'https://raw.githubusercontent.com/payloadcms/payload/refs/heads/main/templates/website/src/endpoints/seed/image-post1.webp',
-    ),
-    fetchFileByURL(
-      'https://raw.githubusercontent.com/payloadcms/payload/refs/heads/main/templates/website/src/endpoints/seed/image-post2.webp',
-    ),
-    fetchFileByURL(
-      'https://raw.githubusercontent.com/payloadcms/payload/refs/heads/main/templates/website/src/endpoints/seed/image-post3.webp',
-    ),
-    fetchFileByURL(
-      'https://raw.githubusercontent.com/payloadcms/payload/refs/heads/main/templates/website/src/endpoints/seed/image-hero1.webp',
-    ),
-  ])
+  const [image1Buffer, image2Buffer, image3Buffer, hero1Buffer, block1Buffer, block2Buffer] =
+    await Promise.all([
+      fetchFileByURL(IMAGES.post1),
+      fetchFileByURL(IMAGES.post2),
+      fetchFileByURL(IMAGES.post3),
+      fetchFileByURL(IMAGES.hero),
+      fetchFileByURL(IMAGES.block1),
+      fetchFileByURL(IMAGES.block2),
+    ])
 
-  const [demoAuthor, image1Doc, image2Doc, image3Doc, imageHomeDoc] = await Promise.all([
-    payload.create({
-      collection: 'users',
-      data: {
-        name: 'Demo Author',
-        email: 'demo-author@example.com',
-        password: 'password',
-      },
-    }),
-    payload.create({
-      collection: 'media',
-      data: image1,
-      file: image1Buffer,
-    }),
-    payload.create({
-      collection: 'media',
-      data: image2,
-      file: image2Buffer,
-    }),
-    payload.create({
-      collection: 'media',
-      data: image2,
-      file: image3Buffer,
-    }),
-    payload.create({
-      collection: 'media',
-      data: imageHero1,
-      file: hero1Buffer,
-    }),
+  const [demoAuthor, image1Doc, image2Doc, image3Doc, imageHomeDoc, block1Doc, block2Doc] =
+    await Promise.all([
+      payload.create({
+        collection: 'users',
+        data: {
+          name: 'Cascade Online Design Team',
+          email: 'demo-author@example.com',
+          password: 'password',
+        },
+      }),
+      payload.create({
+        collection: 'media',
+        data: image1,
+        file: image1Buffer,
+      }),
+      payload.create({
+        collection: 'media',
+        data: image2,
+        file: image2Buffer,
+      }),
+      payload.create({
+        collection: 'media',
+        data: image2,
+        file: image3Buffer,
+      }),
+      payload.create({
+        collection: 'media',
+        data: imageHero1,
+        file: hero1Buffer,
+      }),
+      payload.create({
+        collection: 'media',
+        data: { alt: 'Web development and coding' },
+        file: block1Buffer,
+      }),
+      payload.create({
+        collection: 'media',
+        data: { alt: 'Digital marketing strategy' },
+        file: block2Buffer,
+      }),
+    ])
+
+  payload.logger.info(`— Seeding categories...`)
+
+  const categoryDocs = await Promise.all(
     categories.map((category) =>
       payload.create({
         collection: 'categories',
         data: {
           title: category,
-          slug: category,
+          slug: category.toLowerCase().replace(/\s+/g, '-'),
         },
       }),
     ),
-  ])
+  )
+
+  const catByName = (name: string) => {
+    const doc = categoryDocs.find((c) => c.title === name)
+    return doc ? doc.id : undefined
+  }
 
   payload.logger.info(`— Seeding posts...`)
 
-  // Do not create posts with `Promise.all` because we want the posts to be created in order
-  // This way we can sort them by `createdAt` or `publishedAt` and they will be in the expected order
   const post1Doc = await payload.create({
     collection: 'posts',
     depth: 0,
     context: {
       disableRevalidate: true,
     },
-    data: post1({ heroImage: image1Doc, blockImage: image2Doc, author: demoAuthor }),
+    data: post1({
+      heroImage: image1Doc,
+      blockImage: block1Doc,
+      author: demoAuthor,
+      categories: [catByName('Web Design'), catByName('Development')].filter(Boolean) as string[],
+    }),
   })
 
   const post2Doc = await payload.create({
@@ -157,7 +180,14 @@ export const seed = async ({
     context: {
       disableRevalidate: true,
     },
-    data: post2({ heroImage: image2Doc, blockImage: image3Doc, author: demoAuthor }),
+    data: post2({
+      heroImage: image2Doc,
+      blockImage: block2Doc,
+      author: demoAuthor,
+      categories: [catByName('Branding'), catByName('Digital Marketing')].filter(
+        Boolean,
+      ) as string[],
+    }),
   })
 
   const post3Doc = await payload.create({
@@ -166,10 +196,14 @@ export const seed = async ({
     context: {
       disableRevalidate: true,
     },
-    data: post3({ heroImage: image3Doc, blockImage: image1Doc, author: demoAuthor }),
+    data: post3({
+      heroImage: image3Doc,
+      blockImage: block1Doc,
+      author: demoAuthor,
+      categories: [catByName('SEO'), catByName('Digital Marketing')].filter(Boolean) as string[],
+    }),
   })
 
-  // update each post with related posts
   await payload.update({
     id: post1Doc.id,
     collection: 'posts',
@@ -225,7 +259,7 @@ export const seed = async ({
           {
             link: {
               type: 'custom',
-              label: 'Posts',
+              label: 'Blog',
               url: '/posts',
             },
           },
@@ -256,17 +290,19 @@ export const seed = async ({
           {
             link: {
               type: 'custom',
-              label: 'Source Code',
+              label: 'Cascade Online Design',
               newTab: true,
-              url: 'https://github.com/payloadcms/payload/tree/main/templates/website',
+              url: 'https://cascadeonlinedesign.com/',
             },
           },
           {
             link: {
-              type: 'custom',
-              label: 'Payload',
-              newTab: true,
-              url: 'https://payloadcms.com/',
+              type: 'reference',
+              label: 'Contact',
+              reference: {
+                relationTo: 'pages',
+                value: contactPage.id,
+              },
             },
           },
         ],
@@ -288,11 +324,13 @@ async function fetchFileByURL(url: string): Promise<File> {
   }
 
   const data = await res.arrayBuffer()
+  const contentType = res.headers.get('content-type') || 'image/jpeg'
+  const ext = contentType.includes('webp') ? 'webp' : contentType.includes('png') ? 'png' : 'jpg'
 
   return {
-    name: url.split('/').pop() || `file-${Date.now()}`,
+    name: url.split('/').pop()?.split('?')[0] || `image.${ext}`,
     data: Buffer.from(data),
-    mimetype: `image/${url.split('.').pop()}`,
+    mimetype: contentType,
     size: data.byteLength,
   }
 }

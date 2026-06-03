@@ -5,11 +5,13 @@ export const post3: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
   heroImage,
   blockImage,
   author,
+  categories = [],
 }) => {
   return {
-    slug: 'dollar-and-sense-the-financial-forecast',
+    slug: 'seo-strategies-that-actually-work-for-small-businesses',
     _status: 'published',
     authors: [author],
+    categories,
     content: {
       root: {
         type: 'root',
@@ -17,7 +19,7 @@ export const post3: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
           {
             type: 'block',
             fields: {
-              blockName: 'Disclaimer',
+              blockName: 'Demo Content',
               blockType: 'banner',
               content: {
                 root: {
@@ -32,7 +34,7 @@ export const post3: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
                           format: 1,
                           mode: 'normal',
                           style: '',
-                          text: 'Disclaimer: ',
+                          text: 'Note: ',
                           version: 1,
                         },
                         {
@@ -41,7 +43,7 @@ export const post3: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
                           format: 0,
                           mode: 'normal',
                           style: '',
-                          text: 'This content is fabricated and for demonstration purposes only. To edit this post, ',
+                          text: 'This is sample content for the Cascade Online Design demo. You can edit this post from the ',
                           version: 1,
                         },
                         {
@@ -53,7 +55,7 @@ export const post3: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
                               format: 0,
                               mode: 'normal',
                               style: '',
-                              text: 'navigate to the admin dashboard.',
+                              text: 'admin dashboard',
                               version: 1,
                             },
                           ],
@@ -66,6 +68,15 @@ export const post3: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
                           format: '',
                           indent: 0,
                           version: 3,
+                        },
+                        {
+                          type: 'text',
+                          detail: 0,
+                          format: 0,
+                          mode: 'normal',
+                          style: '',
+                          text: '.',
+                          version: 1,
                         },
                       ],
                       direction: 'ltr',
@@ -95,25 +106,26 @@ export const post3: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: "Money isn't just currency; ",
+                text: 'SEO does not have to be complicated. Focus on these proven strategies and watch your organic traffic grow steadily over time.',
                 version: 1,
               },
-              {
-                type: 'text',
-                detail: 0,
-                format: 2,
-                mode: 'normal',
-                style: '',
-                text: "it's a language. ",
-                version: 1,
-              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            tag: 'h2',
+            version: 1,
+          },
+          {
+            type: 'heading',
+            children: [
               {
                 type: 'text',
                 detail: 0,
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'Dive deep into its nuances, where strategy meets intuition in the vast sea of finance.',
+                text: 'Start with Local SEO',
                 version: 1,
               },
             ],
@@ -132,7 +144,7 @@ export const post3: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: "Money, in its essence, transcends the mere concept of coins and paper notes; it becomes a profound language that speaks of value, trust, and societal structures. Like any language, it possesses intricate nuances and subtleties that require a discerning understanding. It's in these depths where the calculated world of financial strategy collides with the raw, instinctive nature of human intuition. Just as a seasoned linguist might dissect the syntax and semantics of a sentence, a financial expert navigates the vast and tumultuous ocean of finance, guided not only by logic and data but also by gut feelings and foresight. Every transaction, investment, and financial decision becomes a dialogue in this expansive lexicon of commerce and value.",
+                text: 'For small businesses, local search is where the real opportunity lies. Nearly half of all Google searches have local intent — people looking for services and products near them. Claiming and optimizing your Google Business Profile is the single most impactful thing you can do. Ensure your business name, address, and phone number are consistent across every online directory. Encourage satisfied customers to leave reviews, and respond to every one of them. These signals tell search engines that your business is active, legitimate, and trusted by the community.',
                 version: 1,
               },
             ],
@@ -161,7 +173,7 @@ export const post3: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'Stock Market Dynamics: Bulls, Bears, and the Uncertain Middle',
+                text: 'Content That Answers Real Questions',
                 version: 1,
               },
             ],
@@ -180,7 +192,7 @@ export const post3: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'The stock market is a realm of vast opportunity but also poses risks. Discover the forces that drive market trends and the strategies employed by top traders to navigate this complex ecosystem. From market analysis to understanding investor psychology, get a comprehensive insight into the world of stocks.',
+                text: 'The days of keyword stuffing are long gone. Modern SEO rewards content that genuinely helps people. Think about the questions your customers ask you most frequently, then create content that answers those questions thoroughly. A landscaping company might write about seasonal lawn care tips. A bakery might share how to choose the right cake for different occasions. This kind of content naturally incorporates the keywords people search for while positioning your business as a knowledgeable authority in your field.',
                 version: 1,
               },
             ],
@@ -188,6 +200,25 @@ export const post3: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
             format: '',
             indent: 0,
             textFormat: 0,
+            version: 1,
+          },
+          {
+            type: 'heading',
+            children: [
+              {
+                type: 'text',
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: 'Technical Foundations Matter',
+                version: 1,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            tag: 'h2',
             version: 1,
           },
           {
@@ -199,7 +230,7 @@ export const post3: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: "The stock market, often visualized as a bustling arena of numbers and ticker tapes, is as much about human behavior as it is about economics. It's a place where optimism, represented by the bullish rally, meets the caution of bearish downturns, with each vying to dictate the market's direction. But between these two extremes lies an uncertain middle ground, a zone populated by traders and investors who constantly weigh hope against fear. Successful navigation requires more than just financial acumen; it demands an understanding of collective sentiments and the ability to predict not just market movements, but also the reactions of other market participants. In this intricate dance of numbers and nerves, the most astute players are those who master both the hard data and the soft nuances of human behavior.",
+                text: 'Great content on a slow, poorly structured website will still struggle to rank. Search engines prioritize sites that load quickly, work well on mobile devices, and have clean, crawlable code. Ensuring your site has proper meta titles, structured data, an XML sitemap, and fast page load times creates the technical foundation that allows your content to perform at its best. At Cascade Online Design, every website we build is optimized for search from day one — because SEO is not an afterthought, it is a fundamental part of good web design.',
                 version: 1,
               },
             ],
@@ -208,46 +239,6 @@ export const post3: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
             indent: 0,
             textFormat: 0,
             version: 1,
-          },
-          {
-            type: 'block',
-            fields: {
-              blockName: 'Dynamic components',
-              blockType: 'banner',
-              content: {
-                root: {
-                  type: 'root',
-                  children: [
-                    {
-                      type: 'paragraph',
-                      children: [
-                        {
-                          type: 'text',
-                          detail: 0,
-                          format: 0,
-                          mode: 'normal',
-                          style: '',
-                          text: "This content above is completely dynamic using custom layout building blocks configured in the CMS. This can be anything you'd like from rich text and images, to highly designed, complex components.",
-                          version: 1,
-                        },
-                      ],
-                      direction: 'ltr',
-                      format: '',
-                      indent: 0,
-                      textFormat: 0,
-                      version: 1,
-                    },
-                  ],
-                  direction: 'ltr',
-                  format: '',
-                  indent: 0,
-                  version: 1,
-                },
-              },
-              style: 'info',
-            },
-            format: '',
-            version: 2,
           },
         ],
         direction: 'ltr',
@@ -258,11 +249,12 @@ export const post3: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> 
     },
     heroImage: heroImage.id,
     meta: {
-      description: `Money isn't just currency; it's a language. Dive deep into its nuances, where strategy meets intuition in the vast sea of finance.`,
+      description:
+        'SEO does not have to be complicated. Learn proven strategies for local search, content creation, and technical optimization that drive real results.',
       image: heroImage.id,
-      title: 'Dollar and Sense: The Financial Forecast',
+      title: 'SEO Strategies That Actually Work for Small Businesses',
     },
-    relatedPosts: [], // this is populated by the seed script
-    title: 'Dollar and Sense: The Financial Forecast',
+    relatedPosts: [],
+    title: 'SEO Strategies That Actually Work for Small Businesses',
   }
 }
