@@ -13,6 +13,7 @@ COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV PAYLOAD_SECRET=build-time-placeholder-not-used-at-runtime
 ENV DATABASE_URL=postgresql://placeholder:placeholder@localhost:5432/placeholder
+ENV NEXT_PUBLIC_SERVER_URL=https://payload.cascadeonline.dev
 RUN corepack enable && corepack install && pnpm run build
 
 FROM base AS runner
