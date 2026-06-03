@@ -155,7 +155,7 @@ export const seed = async ({
 
   const catByName = (name: string) => {
     const doc = categoryDocs.find((c) => c.title === name)
-    return doc ? doc.id : undefined
+    return doc ? String(doc.id) : undefined
   }
 
   payload.logger.info(`— Seeding posts...`)
