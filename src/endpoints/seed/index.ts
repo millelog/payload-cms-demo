@@ -155,7 +155,7 @@ export const seed = async ({
 
   const catByName = (name: string) => {
     const doc = categoryDocs.find((c) => c.title === name)
-    return doc ? String(doc.id) : undefined
+    return doc ? doc.id : undefined
   }
 
   payload.logger.info(`— Seeding posts...`)
@@ -170,7 +170,7 @@ export const seed = async ({
       heroImage: image1Doc,
       blockImage: block1Doc,
       author: demoAuthor,
-      categories: [catByName('Web Design'), catByName('Development')].filter(Boolean) as string[],
+      categories: [catByName('Web Design'), catByName('Development')].filter((id): id is number => id != null),
     }),
   })
 
@@ -200,7 +200,7 @@ export const seed = async ({
       heroImage: image3Doc,
       blockImage: block1Doc,
       author: demoAuthor,
-      categories: [catByName('SEO'), catByName('Digital Marketing')].filter(Boolean) as string[],
+      categories: [catByName('SEO'), catByName('Digital Marketing')].filter((id): id is number => id != null),
     }),
   })
 
