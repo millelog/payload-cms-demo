@@ -11,6 +11,8 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV PAYLOAD_SECRET=build-time-placeholder-not-used-at-runtime
+ENV DATABASE_URL=postgresql://placeholder:placeholder@localhost:5432/placeholder
 RUN corepack enable && corepack install && pnpm run build
 
 FROM base AS runner
