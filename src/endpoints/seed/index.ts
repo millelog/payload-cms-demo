@@ -327,8 +327,12 @@ async function fetchFileByURL(url: string): Promise<File> {
   const contentType = res.headers.get('content-type') || 'image/jpeg'
   const ext = contentType.includes('webp') ? 'webp' : contentType.includes('png') ? 'png' : 'jpg'
 
+  const segments = new URL(url).pathname.split('/').filter(Boolean)
+  const imageId = segments.length >= 2 ? segments[segments.length - 2] : segments[0]
+  const name = `${(imageId || 'image').slice(0, 12)}.${ext}`
+
   return {
-    name: url.split('/').pop()?.split('?')[0] || `image.${ext}`,
+    name,
     data: Buffer.from(data),
     mimetype: contentType,
     size: data.byteLength,
