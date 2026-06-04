@@ -5,7 +5,6 @@ import { contact as contactPageData } from './contact-page'
 import { home } from './home'
 import { image1 } from './image-1'
 import { image2 } from './image-2'
-import { imageHero1 } from './image-hero-1'
 import { post1 } from './post-1'
 import { post2 } from './post-2'
 import { post3 } from './post-3'
@@ -29,12 +28,11 @@ const cfImage = (id: string) =>
   `https://imagedelivery.net/${CF_ACCOUNT_HASH}/${id}/w=1920`
 
 const IMAGES = {
-  hero: cfImage('c860e1e0-c9fc-4863-df40-b1f56462d100'),
-  post1: cfImage('8fc27dc3-3d59-439c-4dc0-0dc1bcd4b600'),
-  post2: cfImage('1cb6d534-9842-43a9-b79b-2f74b7eb0500'),
-  post3: cfImage('4a3b75a7-17c7-4f18-3422-cda316157c00'),
-  block1: cfImage('9bd93a7e-36a0-4824-33fd-8afe039edc00'),
-  block2: cfImage('0b5633eb-b3e0-4f4f-d0f1-19ffebf17800'),
+  post1: cfImage('6ec88a2c-e337-45ff-b0c6-76bdf355c900'),
+  post2: cfImage('c8c2c5ed-f625-4900-f3db-009706da8a00'),
+  post3: cfImage('4ba80e1e-0912-48e7-82c6-d719c3835500'),
+  block1: cfImage('bec5ddea-92df-49b3-793e-18a1fad86d00'),
+  block2: cfImage('53ea7703-cf46-4c52-003a-5ba4f86d9400'),
 }
 
 export const seed = async ({
@@ -87,22 +85,21 @@ export const seed = async ({
 
   payload.logger.info(`— Seeding media...`)
 
-  const [image1Buffer, image2Buffer, image3Buffer, hero1Buffer, block1Buffer, block2Buffer] =
+  const [image1Buffer, image2Buffer, image3Buffer, block1Buffer, block2Buffer] =
     await Promise.all([
       fetchFileByURL(IMAGES.post1),
       fetchFileByURL(IMAGES.post2),
       fetchFileByURL(IMAGES.post3),
-      fetchFileByURL(IMAGES.hero),
       fetchFileByURL(IMAGES.block1),
       fetchFileByURL(IMAGES.block2),
     ])
 
-  const [demoAuthor, image1Doc, image2Doc, image3Doc, imageHomeDoc, block1Doc, block2Doc] =
+  const [demoAuthor, image1Doc, image2Doc, image3Doc, block1Doc, block2Doc] =
     await Promise.all([
       payload.create({
         collection: 'users',
         data: {
-          name: 'Cascade Online Design Team',
+          name: 'Demo Author',
           email: 'demo-author@example.com',
           password: 'password',
         },
@@ -124,17 +121,12 @@ export const seed = async ({
       }),
       payload.create({
         collection: 'media',
-        data: imageHero1,
-        file: hero1Buffer,
-      }),
-      payload.create({
-        collection: 'media',
-        data: { alt: 'Web development and coding' },
+        data: { alt: 'Demo portfolio screenshot' },
         file: block1Buffer,
       }),
       payload.create({
         collection: 'media',
-        data: { alt: 'Digital marketing strategy' },
+        data: { alt: 'Demo portfolio screenshot' },
         file: block2Buffer,
       }),
     ])
@@ -240,7 +232,7 @@ export const seed = async ({
     payload.create({
       collection: 'pages',
       depth: 0,
-      data: home({ heroImage: imageHomeDoc, metaImage: image2Doc }),
+      data: home({ metaImage: image2Doc }),
     }),
     payload.create({
       collection: 'pages',

@@ -2,12 +2,10 @@ import type { RequiredDataFromCollectionSlug } from 'payload'
 import type { Media } from '@/payload-types'
 
 type HomeArgs = {
-  heroImage: Media
   metaImage: Media
 }
 
 export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> = ({
-  heroImage,
   metaImage,
 }) => {
   return {
@@ -20,7 +18,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
           link: {
             type: 'custom',
             appearance: 'default',
-            label: 'View Our Work',
+            label: 'View Demo Posts',
             url: '/posts',
           },
         },
@@ -28,12 +26,11 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
           link: {
             type: 'custom',
             appearance: 'outline',
-            label: 'Get in Touch',
+            label: 'Demo Contact Form',
             url: '/contact',
           },
         },
       ],
-      media: heroImage.id,
       richText: {
         root: {
           type: 'root',
@@ -47,7 +44,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                   format: 0,
                   mode: 'normal',
                   style: '',
-                  text: 'We Build Websites That Drive Results',
+                  text: 'Payload CMS Demo Site',
                   version: 1,
                 },
               ],
@@ -66,7 +63,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                   format: 0,
                   mode: 'normal',
                   style: '',
-                  text: 'Cascade Online Design creates modern, high-performance websites that help small businesses and organizations grow their online presence.',
+                  text: 'This is a demonstration website built with Payload CMS 3, Next.js, and PostgreSQL. All content on this site is placeholder text for demo purposes.',
                   version: 1,
                 },
               ],
@@ -86,7 +83,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
     },
     layout: [
       {
-        blockName: 'What We Do',
+        blockName: 'Demo Feature Cards',
         blockType: 'content',
         columns: [
           {
@@ -103,7 +100,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                         format: 0,
                         mode: 'normal',
                         style: '',
-                        text: 'What We Do',
+                        text: 'Demo Feature Cards',
                         version: 1,
                       },
                     ],
@@ -137,7 +134,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                         format: 0,
                         mode: 'normal',
                         style: '',
-                        text: 'Web Design',
+                        text: 'Feature One',
                         version: 1,
                       },
                     ],
@@ -156,7 +153,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                         format: 0,
                         mode: 'normal',
                         style: '',
-                        text: 'Custom, mobile-responsive websites built with modern frameworks and optimized for speed and conversions.',
+                        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                         version: 1,
                       },
                     ],
@@ -190,7 +187,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                         format: 0,
                         mode: 'normal',
                         style: '',
-                        text: 'Branding',
+                        text: 'Feature Two',
                         version: 1,
                       },
                     ],
@@ -209,7 +206,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                         format: 0,
                         mode: 'normal',
                         style: '',
-                        text: 'Complete brand identity systems including logos, color palettes, typography, and visual guidelines that make you stand out.',
+                        text: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
                         version: 1,
                       },
                     ],
@@ -243,7 +240,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                         format: 0,
                         mode: 'normal',
                         style: '',
-                        text: 'SEO',
+                        text: 'Feature Three',
                         version: 1,
                       },
                     ],
@@ -262,7 +259,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                         format: 0,
                         mode: 'normal',
                         style: '',
-                        text: 'Search engine optimization strategies that increase your visibility and bring qualified traffic to your website.',
+                        text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
                         version: 1,
                       },
                     ],
@@ -296,7 +293,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                         format: 0,
                         mode: 'normal',
                         style: '',
-                        text: 'E-Commerce',
+                        text: 'Feature Four',
                         version: 1,
                       },
                     ],
@@ -315,7 +312,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                         format: 0,
                         mode: 'normal',
                         style: '',
-                        text: 'Online stores that convert browsers into buyers with seamless checkout flows and product showcases.',
+                        text: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
                         version: 1,
                       },
                     ],
@@ -349,7 +346,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                         format: 0,
                         mode: 'normal',
                         style: '',
-                        text: 'Digital Marketing',
+                        text: 'Feature Five',
                         version: 1,
                       },
                     ],
@@ -368,7 +365,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                         format: 0,
                         mode: 'normal',
                         style: '',
-                        text: 'Targeted campaigns across social media, email, and search that connect you with your ideal audience.',
+                        text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.',
                         version: 1,
                       },
                     ],
@@ -402,7 +399,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                         format: 0,
                         mode: 'normal',
                         style: '',
-                        text: 'Maintenance',
+                        text: 'Feature Six',
                         version: 1,
                       },
                     ],
@@ -421,7 +418,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                         format: 0,
                         mode: 'normal',
                         style: '',
-                        text: 'Ongoing website updates, security patches, and performance monitoring so you can focus on running your business.',
+                        text: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
                         version: 1,
                       },
                     ],
@@ -464,7 +461,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                     format: 0,
                     mode: 'normal',
                     style: '',
-                    text: 'Latest from Our Blog',
+                    text: 'Demo Blog Posts',
                     version: 1,
                   },
                 ],
@@ -483,7 +480,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                     format: 0,
                     mode: 'normal',
                     style: '',
-                    text: 'Stay up to date with the latest insights on web design, branding, and digital marketing from the Cascade Online Design team.',
+                    text: 'These are sample blog posts created during database seeding. You can edit or replace them from the admin dashboard.',
                     version: 1,
                   },
                 ],
@@ -511,7 +508,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
             link: {
               type: 'custom',
               appearance: 'default',
-              label: 'Contact Us',
+              label: 'Demo Button',
               url: '/contact',
             },
           },
@@ -529,7 +526,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                     format: 0,
                     mode: 'normal',
                     style: '',
-                    text: 'Ready to Transform Your Online Presence?',
+                    text: 'This Is a Demo Call to Action',
                     version: 1,
                   },
                 ],
@@ -548,7 +545,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                     format: 0,
                     mode: 'normal',
                     style: '',
-                    text: "Let's build something great together. Contact us today for a free consultation and discover how Cascade Online Design can help your business grow.",
+                    text: 'This section demonstrates the CTA block type in Payload CMS. In a real site, this would contain a compelling message and a call to action button.',
                     version: 1,
                   },
                 ],
@@ -569,9 +566,9 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
     ],
     meta: {
       description:
-        'Cascade Online Design creates modern, high-performance websites for small businesses and organizations.',
-      image: heroImage.id,
-      title: 'Cascade Online Design - Web Design & Branding',
+        'A demonstration website built with Payload CMS 3, Next.js, and PostgreSQL.',
+      image: metaImage.id,
+      title: 'Payload CMS Demo Site',
     },
     title: 'Home',
   }

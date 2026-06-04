@@ -7,18 +7,18 @@ interface Props {
   priority?: 'auto' | 'high' | 'low'
 }
 
+const LOGO_URL =
+  'https://imagedelivery.net/zqlO_f93Gilxz6zHS6qT_w/db0fec33-1eec-4867-e8bc-b3f063c84700/w=500'
+
 export const Logo = (props: Props) => {
-  const { className } = props
+  const { className, loading = 'eager' } = props
 
   return (
-    <span
-      className={clsx(
-        'text-xl font-bold font-poppins tracking-tight whitespace-nowrap',
-        className,
-      )}
-    >
-      <span className="text-teal">Cascade</span>
-      <span> Online Design</span>
-    </span>
+    <img
+      src={LOGO_URL}
+      alt="Cascade Online Design"
+      loading={loading}
+      className={clsx('h-8 w-auto md:h-10', className)}
+    />
   )
 }

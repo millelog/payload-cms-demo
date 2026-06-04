@@ -14,7 +14,7 @@ export const contactForm: RequiredDataFromCollectionSlug<'forms'> = {
               format: 0,
               mode: 'normal',
               style: '',
-              text: 'Thank you for contacting Cascade Online Design. We will be in touch shortly.',
+              text: 'Thank you! Your demo form submission has been received.',
               version: 1,
             },
           ],
@@ -35,7 +35,7 @@ export const contactForm: RequiredDataFromCollectionSlug<'forms'> = {
   createdAt: '2023-01-12T21:47:41.374Z',
   emails: [
     {
-      emailFrom: '"Cascade Online Design" <demo@cascadeonlinedesign.com>',
+      emailFrom: '"Payload CMS Demo" <demo@example.com>',
       emailTo: '{{email}}',
       message: {
         root: {
@@ -50,7 +50,7 @@ export const contactForm: RequiredDataFromCollectionSlug<'forms'> = {
                   format: 0,
                   mode: 'normal',
                   style: '',
-                  text: 'Thanks for reaching out to Cascade Online Design. We received your message and will get back to you within 24 hours.',
+                  text: 'This is an automated response from the Payload CMS demo site. Your demo form submission has been recorded.',
                   version: 1,
                 },
               ],
@@ -67,7 +67,7 @@ export const contactForm: RequiredDataFromCollectionSlug<'forms'> = {
           version: 1,
         },
       },
-      subject: 'Thanks for contacting Cascade Online Design',
+      subject: 'Payload CMS Demo - Form Submission Received',
     },
   ],
   fields: [
