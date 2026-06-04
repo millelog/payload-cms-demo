@@ -40,7 +40,7 @@ export const Card: React.FC<{
       <div className="relative w-full aspect-video overflow-hidden">
         {!metaImage && <div className="">No image</div>}
         {metaImage && typeof metaImage !== 'string' && (
-          <Media resource={metaImage} size="33vw" fill imgClassName="object-cover" />
+          <Media resource={metaImage} size="33vw" fill imgClassName="object-cover" pictureClassName="absolute inset-0" />
         )}
       </div>
       <div className="p-4">
