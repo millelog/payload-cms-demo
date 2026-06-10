@@ -13,6 +13,8 @@ services:
       - NEXT_PUBLIC_SERVER_URL=${NEXT_PUBLIC_SERVER_URL:-https://payload.cascadeonline.dev}
     expose:
       - "3000"
+    volumes:
+      - media:/app/public/media
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.payload.rule=Host(`payload.cascadeonline.dev`)"
@@ -38,3 +40,4 @@ services:
 
 volumes:
   pgdata:
+  media:

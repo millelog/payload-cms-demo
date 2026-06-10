@@ -25,6 +25,9 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+# Pre-create the media mount point owned by the runtime user so the persistent
+# named volume (docker-compose.yml) inherits correct ownership on first mount.
+RUN mkdir -p ./public/media && chown nextjs:nodejs ./public/media
 RUN mkdir .next
 RUN chown nextjs:nodejs .next
 
